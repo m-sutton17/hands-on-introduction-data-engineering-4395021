@@ -1,0 +1,32 @@
+[2024-04-13T14:58:13.294+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: challenge_dag.transform_task manual__2024-04-13T14:58:07.963940+00:00 [queued]>
+[2024-04-13T14:58:13.299+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: challenge_dag.transform_task manual__2024-04-13T14:58:07.963940+00:00 [queued]>
+[2024-04-13T14:58:13.300+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2024-04-13T14:58:13.300+0000] {taskinstance.py:1280} INFO - Starting attempt 1 of 1
+[2024-04-13T14:58:13.300+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2024-04-13T14:58:13.331+0000] {taskinstance.py:1300} INFO - Executing <Task(PythonOperator): transform_task> on 2024-04-13 14:58:07.963940+00:00
+[2024-04-13T14:58:13.335+0000] {standard_task_runner.py:55} INFO - Started process 25627 to run task
+[2024-04-13T14:58:13.338+0000] {standard_task_runner.py:82} INFO - Running: ['airflow', 'tasks', 'run', 'challenge_dag', 'transform_task', 'manual__2024-04-13T14:58:07.963940+00:00', '--job-id', '39', '--raw', '--subdir', 'DAGS_FOLDER/challenge_dag.py', '--cfg-path', '/tmp/tmpjgz3nsjp']
+[2024-04-13T14:58:13.339+0000] {standard_task_runner.py:83} INFO - Job 39: Subtask transform_task
+[2024-04-13T14:58:13.392+0000] {task_command.py:388} INFO - Running <TaskInstance: challenge_dag.transform_task manual__2024-04-13T14:58:07.963940+00:00 [running]> on host codespaces-3318c7
+[2024-04-13T14:58:13.547+0000] {taskinstance.py:1507} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=airflow
+AIRFLOW_CTX_DAG_ID=challenge_dag
+AIRFLOW_CTX_TASK_ID=transform_task
+AIRFLOW_CTX_EXECUTION_DATE=2024-04-13T14:58:07.963940+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-04-13T14:58:07.963940+00:00
+[2024-04-13T14:58:13.552+0000] {taskinstance.py:1768} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/workspaces/hands-on-introduction-data-engineering-4395021/airflow/dags/challenge_dag.py", line 24, in transformData
+    aggregate_df.rename(columns={'GICS Sector': 'Sector'})
+TypeError: Series.rename() got an unexpected keyword argument 'columns'
+[2024-04-13T14:58:13.554+0000] {taskinstance.py:1318} INFO - Marking task as FAILED. dag_id=challenge_dag, task_id=transform_task, execution_date=20240413T145807, start_date=20240413T145813, end_date=20240413T145813
+[2024-04-13T14:58:13.583+0000] {standard_task_runner.py:100} ERROR - Failed to execute job 39 for task transform_task (Series.rename() got an unexpected keyword argument 'columns'; 25627)
+[2024-04-13T14:58:13.630+0000] {local_task_job.py:208} INFO - Task exited with return code 1
+[2024-04-13T14:58:13.643+0000] {taskinstance.py:2578} INFO - 0 downstream tasks scheduled from follow-on schedule check
